@@ -5,7 +5,7 @@ from pathlib import Path
 from src.sales_transform import load_sales, summarize_sales
 
 DAG_ID = "sales_daily_summary"
-DESCRIPTION = "Ringkasan transaksi dan omzet harian dari data/sales.csv"
+DESCRIPTION = "Ringkasan jumlah transaksi dan omzet harian dari data/sales.csv"
 SCHEDULE = "daily"
 TASKS = ["extract_sales", "transform_sales", "validate_summary"]
 DEPENDENCIES = [
