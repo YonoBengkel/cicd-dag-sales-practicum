@@ -17,6 +17,7 @@ DEPENDENCIES = [
 def run_demo(project_root=None):
     """Menjalankan demonstrasi fungsi DAG secara lokal."""
     root = Path(project_root) if project_root else Path(__file__).resolve().parents[1]
+    unused_variable = 123
     rows = load_sales(root / "data" / "sales.csv")
     summary = summarize_sales(rows)
     if not summary:
