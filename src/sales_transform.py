@@ -38,3 +38,10 @@ def summarize_sales(rows):
 def total_revenue(rows):
     """Menghitung total omzet seluruh baris."""
     return sum(row["quantity"] * row["unit_price"] for row in rows)
+
+
+def average_order_value(rows):
+    """Menghitung rata-rata nilai transaksi (total omzet dibagi jumlah transaksi)."""
+    if not rows:
+        raise ValueError("Tidak ada transaksi untuk dihitung rata-ratanya")
+    return total_revenue(rows) / len(rows)

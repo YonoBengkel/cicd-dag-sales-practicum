@@ -4,7 +4,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from src.sales_transform import load_sales, summarize_sales, total_revenue
+from src.sales_transform import (
+    average_order_value,
+    load_sales,
+    summarize_sales,
+    total_revenue,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -35,6 +40,13 @@ class TestSalesTransform(unittest.TestCase):
             )
             with self.assertRaises(ValueError):
                 load_sales(csv_path)
+
+    def test_average_order_value(self):
+        self.assertEqual(average_order_value(self.rows), 43875)
+
+    def test_average_order_value_rejects_empty_rows(self):
+        with self.assertRaises(ValueError):
+            average_order_value([])
 
 
 if __name__ == "__main__":
