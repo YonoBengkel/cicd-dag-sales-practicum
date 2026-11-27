@@ -1,0 +1,17 @@
+# Target deployment pengganti VM: satu container berisi GitHub Actions self-hosted runner.
+# Tidak ada port yang dibuka; runner hanya membuat koneksi keluar ke GitHub.
+services:
+  cicd-target:
+    build: ./docker/target
+    image: cicd-target:2.338.2
+    hostname: cicd-target
+    init: true
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - runner:/home/ghrunner/actions-runner
+      - data-cluster:/opt/data-cluster
+
+volumes:
+  runner:
+  data-cluster:
