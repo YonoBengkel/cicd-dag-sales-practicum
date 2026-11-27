@@ -11,6 +11,9 @@ Studi kasus: otomatisasi validasi dan deployment definisi DAG pemrosesan data pe
 - `scripts/deploy.sh`: deployment dengan release directory dan symlink `current`.
 - `scripts/rollback.sh`: rollback ke release sebelumnya.
 
+## Target deployment
+Target deployment memakai container Docker dari layanan `cicd-target` (`docker-compose.yml` dan `docker/target/`), berisi self-hosted runner berlabel `cicd-target` dan direktori `/opt/data-cluster`, sebagai pengganti VM Ubuntu.
+
 Ikuti panduan lengkap pada `PANDUAN_PRAKTIKUM_CICD.md` (file MD terpisah dalam paket unduhan).
 
 > Catatan: DAG di proyek ini adalah representasi Python yang netral-platform, bukan DAG Apache Airflow. Tujuannya mempraktikkan alur CI/CD dan pemindahan file. Integrasi dengan platform orkestrasi tertentu memerlukan penyesuaian.
